@@ -23,3 +23,11 @@ function createScoreLabel({ score = 100, object}) {
         }
     });
 }
+
+function rectangularColission({ retangle1, retangle2 }) {
+    return (
+        retangle1.position.y + rectangle1.height >= retangle2.position.y &&
+        retangle1.position.x + rectangle1.width >= retangle2.position.x &&
+        retangle1.position.x <= retangle2.width + retangle2.width 
+    );
+}
