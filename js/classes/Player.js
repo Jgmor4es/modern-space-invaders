@@ -26,45 +26,46 @@ class Player {
     c.save();
     c.globalAlpha = this.opacity;
     c.translate(
-        player.position.x + player .width / 2,
-        player.position.y + player.height / 2
+      player.position.x + player.width / 2,
+      player.position.y + player.height / 2
     );
     c.rotate(this.rotation);
     c.translate(
-        -player.position.x - player.width / 2,
-        -player.position.y - player.height / 2
+      -player.position.x - player.width / 2,
+      -player.position.y - player.height / 2
     );
     c.drawImage(
-        this.image,
-        player.position.x,
-        player.position.y,
-        this.width,
-        this.height
+      this.image,
+      player.position.x,
+      player.position.y,
+      this.width,
+      this.height
     );
     c.restore();
   }
   update() {
-    if(!this.image) return;
+    if (!this.image) return;
     this.draw();
     this.position.x += this.velocity.x;
-    if(this.opacity !== 1) return;
+    if (this.opacity !== 1) return;
     this.frames++;
-    if(this.frames % 2 === 0) {
-        this.particles.push(
-            new Particle ({
-                position: {
-                    x: this.position.x + this.width / 2,
-                    y: this.position.y + this.height 
-                },
-                velocity: {
-                    x: (Math.round() - 0.5) * 1.5,
-                    y: 1.4
-                },
-                radius: Math.random() * 2,
-                color: "white",
-                fades: true
-            }));
-            this.frames = 0;
+    if (this.frames % 2 === 0) {
+      this.particles.push(
+        new Particle({
+          position: {
+            x: this.position.x + this.width / 2,
+            y: this.position.y + this.height
+          },
+          velocity: {
+            x: (Math.round() - 0.5) * 1.5,
+            y: 1.4
+          },
+          radius: Math.random() * 2,
+          color: "white",
+          fades: true
+        })
+      );
+      this.frames = 0;
     }
   }
 }
