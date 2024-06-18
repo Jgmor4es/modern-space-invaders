@@ -411,3 +411,13 @@ if(
 
 frames++;
 }
+
+document.querySelector("#startButton").addEventListener("click", () => {
+  audio.backgroundMusic.play();
+  audio.start.play();
+
+  document.querySelector("#startScreen").style.display = "none";
+  document.querySelector("#ScoreContainer").style.display = "block";
+  init();
+  animate();
+})
