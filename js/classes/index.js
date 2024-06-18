@@ -364,4 +364,22 @@ function animate() {
         endGame();
   }
 });
+
+if(keys.ArrowLeft.pressed && player.position.x >= 0) {
+  player.velocity.x = -7;
+  player.rotation = -0.15;
+} else if(
+  keys.ArrowRight.pressed &&
+  player.position.x + player.width <= canvas.width
+) {
+  player.velocity.x = 7;
+  player.rotation = 0.15;
+} else {
+  player.velocity.x = 0;
+  player.rotation = 0;
+}
+
+if(frames % randomInterval === 0) {
+  spawnBuffer = spawnBuffer < 0 ? 100 : spawnBuffer;
+}
 }
