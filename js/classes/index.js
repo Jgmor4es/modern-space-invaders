@@ -335,10 +335,33 @@ function animate() {
                         audio.explode.play();
                         grid.invaders.splice(i, 1);
                         projectiles.splice(j, 1);
+
+                        if(grid.invaders.length > 0) {
+                          const firstInvader = grid.invaders[0];
+                          const lastInvader = grid.invaders[grid.invaders.length - 1];
+
+                          grid.width = 
+                          lastInvader.position.x - 
+                          firstInvader.position.x +
+                          firstInvader.width;
+
+                          grid.position.x = firstInvader.position.x;
+                        } else {
+                          grids.splice(gridIndex, 1);
+                        }
                     }
-                })
+                }, 0);
             }
-        })
-    }
-  });
+        });
+
+        if (
+          rectangularCollision({
+            rectangle1: invader,
+            rectangle2: player
+          }) &&
+          !game.over
+        )
+        endGame();
+  }
+});
 }
