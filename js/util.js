@@ -4,10 +4,9 @@ function randomBetween(min, max) {
 
 function createScoreLabel({ score = 100, object }) {
   const scoreLabel = document.createElement("label");
-
   scoreLabel.innerHTML = score;
   scoreLabel.style.position = "absolute";
-  scoreLabel.style.cor = "white";
+  scoreLabel.style.color = "white";
   scoreLabel.style.top = object.position.y + "px";
   scoreLabel.style.left = object.position.x + "px";
   scoreLabel.style.userSelect = "none";
@@ -24,29 +23,29 @@ function createScoreLabel({ score = 100, object }) {
   });
 }
 
-function rectangularColission({ retangle1, retangle2 }) {
+function rectangularCollision({ rectangle1, rectangle2 }) {
   return (
-    retangle1.position.y + rectangle1.height >= retangle2.position.y &&
-    retangle1.position.x + rectangle1.width >= retangle2.position.x &&
-    retangle1.position.x <= retangle2.width + retangle2.width
+    rectangle1.position.y + rectangle1.height >= rectangle2.position.y &&
+    rectangle1.position.x + rectangle1.width >= rectangle2.position.x &&
+    rectangle1.position.x <= rectangle2.position.x + rectangle2.width
   );
 }
 
 function createParticles({ object, color, fades }) {
   for (let i = 0; i < 15; i++) {
-    particle.push(
+    particles.push(
       new Particle({
         position: {
           x: object.position.x + object.width / 2,
           y: object.position.y + object.height / 2
         },
         velocity: {
-          x: (Math.round() - 0.5) * 2,
-          y: (Math.round() - 0.5) * 2
+          x: (Math.random() - 0.5) * 2,
+          y: (Math.random() - 0.5) * 2
         },
         radius: Math.random() * 3,
         color: color || "#BAA0DE",
-        fades: fades
+        fades
       })
     );
   }
